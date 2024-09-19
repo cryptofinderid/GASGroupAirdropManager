@@ -1,6 +1,7 @@
 var token = "TELEGRAM_BOT_TOKEN"; // Ganti dengan token bot Telegram Anda
 var sheetId = "SPREADSHEET_ID";   // Ganti dengan ID spreadsheet Anda
-var userSheetName = "user_" + "GROUP_ID"; // Nama sheet berdasarkan id grup
+var GROUPID = "GROUP_ID";
+var userSheetName = "user_" + GROUPID; // Nama sheet berdasarkan id grup
 
 function doPost(e) {
   try {
@@ -10,19 +11,35 @@ function doPost(e) {
     var messageId = contents.message ? contents.message.message_id : contents.callback_query.message.message_id;
     var userId = contents.message ? contents.message.from.id : contents.callback_query.from.id;
 
-    var userData = getUserData(chatId); // Ambil data pengguna dari PropertiesService
+    var chatType = contents.message ? contents.message.chat.type : "";
+
+    // Periksa apakah pengguna adalah admin sebelum melanjutkan
+    var isAdmin = checkAdminAndPost(chatId, userId);
+    if (!isAdmin) {
+      // Jika bukan admin, kirim pesan dan hentikan eksekusi
+      sendMessage(chatId, "Anda bukan admin atau pemilik grup ini, tidak bisa mengakses fitur bot.");
+      return; // Hentikan eksekusi lebih lanjut
+    }
+
+    var userData = getUserData(chatId);
 
     if (!userData) {
       userData = { step: "start" };
-      saveUserData(chatId, userData); // Simpan status pengguna
+      saveUserData(chatId, userData);
     }
 
     if (text == "/start") {
+  	if (isGroup(chatType)) {
+        return;
+      }
       sendMessage(chatId, "Selamat datang!!!");
       createSheetIfNotExist(userSheetName);
       userData = { step: "start" };
       saveUserData(chatId, userData);
     } else if (text == "/add") {
+  	if (isGroup(chatType)) {
+        return;
+      }
       logSheet("Input dimulai", "SUCCESS");
       userData.step = "name_step";
       saveUserData(chatId, userData);
@@ -58,20 +75,29 @@ function doPost(e) {
       };
       sendMessage(chatId, confirmationMessage, buttons);
     } else if (text == "/edit") {
+  	if (isGroup(chatType)) {
+        return;
+      }
       clearChat(chatId, messageId);
       var buttons = getEditButtons(userSheetName);
       sendMessage(chatId, "Pilih data yang akan diedit:", buttons);
     } else if (text == "/del") {
+  	if (isGroup(chatType)) {
+        return;
+      }
       clearChat(chatId, messageId);
       var buttons = getDeleteButtons(userSheetName);
       sendMessage(chatId, "Pilih data yang akan dihapus:", buttons);
     } else if (text == "/daily") {
-      if (contents.message.chat.type === 'group' || contents.message.chat.type === 'supergroup') {
-        checkAdminAndPost(chatId, userId);
-      } else {
-        sendMessage(chatId, "Perintah ini hanya bisa dijalankan di grup. Silakan kirim perintah ini di grup yang Anda menjadi admin.");
+  	if (!isGroup(chatType)) {
+        sendMessage(chatId, "Perintah ini hanya bisa dijalankan di grup.");
+        return;
       }
+      postAirdropList(chatId);
     } else if (text == "/cancel") {
+  	if (isGroup(chatType)) {
+        return;
+      }
       clearChat(chatId, messageId);
       sendMessage(chatId, "Proses dibatalkan.");
       deleteUserData(callbackChatId);
@@ -194,6 +220,10 @@ function logSheet(message, type) {
   sheet.appendRow([timestamp, type, message]);
 }
 
+function isGroup(chatType) {
+  return chatType === 'group' || chatType === 'supergroup';
+}
+
 function checkAdminAndPost(chatId, userId) {
   var url = `https://api.telegram.org/bot${token}/getChatMember?chat_id=${chatId}&user_id=${userId}`;
   var response = UrlFetchApp.fetch(url);
@@ -201,11 +231,7 @@ function checkAdminAndPost(chatId, userId) {
 
   var isAdminOrOwner = chatMember.status === 'administrator' || chatMember.status === 'creator';
 
-  if (isAdminOrOwner) {
-    postAirdropList(chatId);
-  } else {
-    sendMessage(chatId, "Anda bukan admin atau pemilik grup ini, tidak bisa melakukan posting.");
-  }
+  return isAdminOrOwner;
 }
 
 function postAirdropList(chatId) {
