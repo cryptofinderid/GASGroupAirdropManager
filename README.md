@@ -74,17 +74,6 @@ Here are the commands and features you can use with your bot:
 
 ---
 
-## 📸 Screenshots (Optional)
-
-| Feature          | Preview |
-|------------------|---------|
-| Adding Data (From Bot)     | ![Add Data](https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/add-data.jpg) |
-| Editing Data (From Bot)    | ![Edit Data](https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/edit-data.jpg) |
-| Deleting Data (From Bot)    | ![Daily Recap](https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/delete-data.jpg) |
-| Daily Recap (From Group)   | ![Daily Recap](https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/daily-group.jpg) |
-
----
-
 ## 🛠 Creator
 
 This bot is created and maintained by [@cryptofinderid](https://t.me/cryptofinderid). Feel free to reach out for any inquiries or improvements!
@@ -97,7 +86,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## Bahasa Indonesia 🇮🇩
+## 🇮🇩 Bahasa Indonesia
 
 Bot Telegram ini mengelola input pengguna dan menyimpan data di Google Sheets. Bot ini mendukung penambahan, pengeditan, penghapusan data, dan fitur rekap harian yang bisa digunakan dalam grup.
 
@@ -176,6 +165,31 @@ Berikut adalah perintah yang bisa Anda gunakan:
 ## ✉️ Creator
 
 Dibuat oleh [@cryptofinderid](https://t.me/cryptofinderid). Jangan ragu untuk menghubungi untuk pertanyaan atau saran perbaikan!
+
+# 📸 Screenshots
+
+Berikut adalah beberapa contoh tampilan fitur yang tersedia pada bot.
+
+<div align="center">
+  <table>
+    <tr>
+      <td><b>Adding Data (From Bot)</b></td>
+      <td><b>Editing Data (From Bot)</b></td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/add-data.jpg" alt="Add Data" width="300"></td>
+      <td><img src="https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/edit-data.jpg" alt="Edit Data" width="300"></td>
+    </tr>
+    <tr>
+      <td><b>Deleting Data (From Bot)</b></td>
+      <td><b>Daily Recap (From Group)</b></td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/delete-data.jpg" alt="Delete Data" width="300"></td>
+      <td><img src="https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/daily-group.jpg" alt="Daily Recap" width="300"></td>
+    </tr>
+  </table>
+</div>
 
 ---
 
