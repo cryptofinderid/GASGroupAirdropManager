@@ -26,6 +26,7 @@ Follow these steps to get your bot up and running on Google Apps Script:
 3. In the code, replace:
    - `TELEGRAM_BOT_TOKEN` with your bot token.
    - `SPREADSHEET_ID` with your Google Spreadsheet ID.
+   - `GROUP_ID` wit your Telegram Group ID.
 4. Click **Deploy** > **New Deployment** and select **Web App**.
 5. Set access to **Anyone**, then deploy.
 6. Copy the **Web App URL**.
@@ -123,6 +124,7 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan bot:
 3. Ganti:
    - `TELEGRAM_BOT_TOKEN` dengan token bot Anda.
    - `SPREADSHEET_ID` dengan Spreadsheet ID Google Anda.
+   - `GROUP_ID` dengan Telegram ID Grup Anda.
 4. Klik **Deploy** > **New Deployment** dan pilih **Web App**.
 5. Set akses menjadi **Anyone**, kemudian deploy.
 6. Salin **Web App URL**.
