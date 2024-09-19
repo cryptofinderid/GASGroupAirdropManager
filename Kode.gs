@@ -1,5 +1,6 @@
 var token = "TELEGRAM_BOT_TOKEN"; // Ganti dengan token bot Telegram Anda
 var sheetId = "SPREADSHEET_ID";   // Ganti dengan ID spreadsheet Anda
+var userSheetName = "user_" + "GROUP_ID"; // Nama sheet berdasarkan id grup
 
 function doPost(e) {
   try {
@@ -8,7 +9,6 @@ function doPost(e) {
     var text = contents.message ? contents.message.text : "";
     var messageId = contents.message ? contents.message.message_id : contents.callback_query.message.message_id;
     var userId = contents.message ? contents.message.from.id : contents.callback_query.from.id;
-    var userSheetName = "user_" + String(chatId); // Nama sheet berdasarkan ID pengguna
 
     var userData = getUserData(chatId); // Ambil data pengguna dari PropertiesService
 
@@ -74,6 +74,7 @@ function doPost(e) {
     } else if (text == "/cancel") {
       clearChat(chatId, messageId);
       sendMessage(chatId, "Proses dibatalkan.");
+      deleteUserData(callbackChatId);
     }
 
     if (contents.callback_query) {
@@ -198,17 +199,16 @@ function checkAdminAndPost(userId, chatId, userId) {
   var response = UrlFetchApp.fetch(url);
   var chatMember = JSON.parse(response.getContentText()).result;
 
-  var isAdminOrOwner = chatMember.status === 'creator';
+  var isAdminOrOwner = chatMember.status === 'administrator' || chatMember.status === 'creator';
 
   if (isAdminOrOwner) {
-    postAirdropList(userId, chatId);
+    postAirdropList(chatId);
   } else {
-    sendMessage(chatId, "Perintah hanya bisa dilakukan pemilik group.");
+    sendMessage(chatId, "Anda bukan admin atau pemilik grup ini, tidak bisa melakukan posting.");
   }
 }
 
-function postAirdropList(userId, chatId) {
-  var userSheetName = "user_" + userId;
+function postAirdropList(chatId) {
   var sheet = SpreadsheetApp.openById(sheetId).getSheetByName(userSheetName);
   var data = sheet.getDataRange().getValues();
 
