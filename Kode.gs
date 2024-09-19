@@ -28,8 +28,15 @@ function doPost(e) {
       saveUserData(chatId, userData);
     }
 
-    if (text == "/start") {
-  	if (isGroup(chatType)) {
+    if (text == "/cancel") {
+      if (isGroup(chatType)) {
+        return;
+      }
+      clearChat(chatId, messageId);
+      sendMessage(chatId, "Proses dibatalkan.");
+      deleteUserData(callbackChatId);
+    } else if (text == "/start") {
+      if (isGroup(chatType)) {
         return;
       }
       sendMessage(chatId, "Selamat datang!!!");
@@ -37,7 +44,7 @@ function doPost(e) {
       userData = { step: "start" };
       saveUserData(chatId, userData);
     } else if (text == "/add") {
-  	if (isGroup(chatType)) {
+      if (isGroup(chatType)) {
         return;
       }
       logSheet("Input dimulai", "SUCCESS");
@@ -75,32 +82,25 @@ function doPost(e) {
       };
       sendMessage(chatId, confirmationMessage, buttons);
     } else if (text == "/edit") {
-  	if (isGroup(chatType)) {
+      if (isGroup(chatType)) {
         return;
       }
       clearChat(chatId, messageId);
       var buttons = getEditButtons(userSheetName);
       sendMessage(chatId, "Pilih data yang akan diedit:", buttons);
     } else if (text == "/del") {
-  	if (isGroup(chatType)) {
+      if (isGroup(chatType)) {
         return;
       }
       clearChat(chatId, messageId);
       var buttons = getDeleteButtons(userSheetName);
       sendMessage(chatId, "Pilih data yang akan dihapus:", buttons);
     } else if (text == "/daily") {
-  	if (!isGroup(chatType)) {
+      if (!isGroup(chatType)) {
         sendMessage(chatId, "Perintah ini hanya bisa dijalankan di grup.");
         return;
       }
       postAirdropList(chatId);
-    } else if (text == "/cancel") {
-  	if (isGroup(chatType)) {
-        return;
-      }
-      clearChat(chatId, messageId);
-      sendMessage(chatId, "Proses dibatalkan.");
-      deleteUserData(callbackChatId);
     }
 
     if (contents.callback_query) {
