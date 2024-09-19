@@ -67,7 +67,7 @@ function doPost(e) {
       sendMessage(chatId, "Pilih data yang akan dihapus:", buttons);
     } else if (text == "/daily") {
       if (contents.message.chat.type === 'group' || contents.message.chat.type === 'supergroup') {
-        checkAdminAndPost(userId, chatId, userId);
+        checkAdminAndPost(chatId, userId);
       } else {
         sendMessage(chatId, "Perintah ini hanya bisa dijalankan di grup. Silakan kirim perintah ini di grup yang Anda menjadi admin.");
       }
@@ -194,7 +194,7 @@ function logSheet(message, type) {
   sheet.appendRow([timestamp, type, message]);
 }
 
-function checkAdminAndPost(userId, chatId, userId) {
+function checkAdminAndPost(chatId, userId) {
   var url = `https://api.telegram.org/bot${token}/getChatMember?chat_id=${chatId}&user_id=${userId}`;
   var response = UrlFetchApp.fetch(url);
   var chatMember = JSON.parse(response.getContentText()).result;
