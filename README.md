@@ -47,14 +47,14 @@ Replace `<YOUR_TELEGRAM_BOT_TOKEN>` with your bot token and `<YOUR_WEB_APP_URL>`
 
 Here are the commands and features you can use with your bot:
 
-| Command   | Description                                                                                           | Perintah   | Deskripsi                                                                                               |
-|-----------|-------------------------------------------------------------------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
-| `/start`  | Starts the bot and creates a personal sheet for the user.                                              | `/start`   | Memulai bot dan membuat sheet personal untuk pengguna.                                                   |
-| `/add`    | Initiates the process to add new data (Name, Type, URL).                                               | `/add`     | Memulai proses menambahkan data baru (Nama, Tipe, URL).                                                  |
-| `/edit`   | Allows the user to edit existing data in their personal sheet.                                         | `/edit`    | Memungkinkan pengguna mengedit data yang sudah ada di sheet mereka.                                      |
-| `/del`    | Allows the user to delete data from their sheet.                                                       | `/del`     | Memungkinkan pengguna menghapus data dari sheet mereka.                                                  |
-| `/daily`  | Posts a daily recap of user data to the group (admins only).                                           | `/daily`   | Mengirimkan rekap harian dari data pengguna ke grup (hanya admin).                                        |
-| `/cancel` | Cancels the current process.                                                                           | `/cancel`  | Membatalkan proses saat ini.                                                                             |
+| Command   | Description                                                                                           |
+|-----------|-------------------------------------------------------------------------------------------------------|
+| `/start`  | Starts the bot and creates a personal sheet for the user.                                              |
+| `/add`    | Initiates the process to add new data (Name, Type, URL).                                               |
+| `/edit`   | Allows the user to edit existing data in their personal sheet.                                         |
+| `/del`    | Allows the user to delete data from their sheet.                                                       |
+| `/daily`  | Posts a daily recap of user data to the group (admins only).                                           |
+| `/cancel` | Cancels the current process.                                                                           |
 
 ---
 
@@ -78,9 +78,10 @@ Here are the commands and features you can use with your bot:
 
 | Feature          | Preview |
 |------------------|---------|
-| Adding Data      | ![Add Data](https://link-to-screenshot) |
-| Editing Data     | ![Edit Data](https://link-to-screenshot) |
-| Daily Recap      | ![Daily Recap](https://link-to-screenshot) |
+| Adding Data (From Bot)     | ![Add Data](https://link-to-screenshot) |
+| Editing Data (From Bot)    | ![Edit Data](https://link-to-screenshot) |
+| Deleting Data (From Bot)    | ![Daily Recap](https://link-to-screenshot) |
+| Daily Recap (From Group)   | ![Daily Recap](https://link-to-screenshot) |
 
 ---
 
@@ -145,14 +146,14 @@ Ganti `<YOUR_TELEGRAM_BOT_TOKEN>` dengan token bot Anda dan `<YOUR_WEB_APP_URL>`
 
 Berikut adalah perintah yang bisa Anda gunakan:
 
-| Command   | Description                                                                                           | Perintah   | Deskripsi                                                                                               |
-|-----------|-------------------------------------------------------------------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
-| `/start`  | Memulai bot dan membuat sheet personal untuk pengguna.                                                 | `/start`   | Memulai bot dan membuat sheet personal untuk pengguna.                                                   |
-| `/add`    | Memulai proses menambahkan data baru (Nama, Tipe, URL).                                                | `/add`     | Memulai proses menambahkan data baru (Nama, Tipe, URL).                                                  |
-| `/edit`   | Memungkinkan pengguna mengedit data yang sudah ada di sheet mereka.                                    | `/edit`    | Memungkinkan pengguna mengedit data yang sudah ada di sheet mereka.                                      |
-| `/del`    | Memungkinkan pengguna menghapus data dari sheet mereka.                                                | `/del`     | Memungkinkan pengguna menghapus data dari sheet mereka.                                                  |
-| `/daily`  | Mengirimkan rekap harian dari data pengguna ke grup (hanya admin).                                     | `/daily`   | Mengirimkan rekap harian dari data pengguna ke grup (hanya admin).                                        |
-| `/cancel` | Membatalkan proses saat ini.                                                                           | `/cancel`  | Membatalkan proses saat ini.                                                                             |
+| Perintah   | Deskripsi                                                                                               |
+|------------|---------------------------------------------------------------------------------------------------------|
+| `/start`   | Memulai bot dan membuat sheet personal untuk pengguna.                                                   |
+| `/add`     | Memulai proses menambahkan data baru (Nama, Tipe, URL).                                                  |
+| `/edit`    | Memungkinkan pengguna mengedit data yang sudah ada di sheet mereka.                                      |
+| `/del`     | Memungkinkan pengguna menghapus data dari sheet mereka.                                                  |
+| `/daily`   | Mengirimkan rekap harian dari data pengguna ke grup (hanya admin).                                        |
+| `/cancel`  | Membatalkan proses saat ini.                                                                             |
 
 ---
 
