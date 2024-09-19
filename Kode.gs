@@ -17,7 +17,7 @@ function doPost(e) {
     var isAdmin = checkAdminAndPost(GROUPID, userId);
     if (!isAdmin) {
       // Jika bukan admin, kirim pesan dan hentikan eksekusi
-      sendMessage(chatId, "Anda bukan admin atau pemilik grup getGroupName(GROUPID), tidak bisa mengakses fitur bot.");
+      sendMessage(chatId, `Anda bukan admin atau pemilik grup *${getGroupName(GROUPID)}*, tidak bisa mengakses fitur bot.`);
       return; // Hentikan eksekusi lebih lanjut
     }
 
