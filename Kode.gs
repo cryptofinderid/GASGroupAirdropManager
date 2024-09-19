@@ -73,7 +73,7 @@ function doPost(e) {
       var type = userData.type;
       var url = userData.url;
 
-      var confirmationMessage = `Apakah data berikut sudah benar?\nNama: ${name}\nType: ${type}\nUrl: ${url}`;
+      var confirmationMessage = `Apakah data berikut sudah benar?\n\nNama: ${name}\nType: ${type}\nUrl: ${url}`;
       var buttons = {
         inline_keyboard: [
           [{ text: "Ya", callback_data: "confirm_yes" }],
@@ -164,7 +164,7 @@ function doPost(e) {
         clearChat(callbackChatId, callbackMessageId);
         if (success) {
           deleteUserData(callbackChatId);
-          sendMessage(callbackChatId, `Data berhasil dimasukkan:\nNama: ${name}\nType: ${type}\nUrl: ${url}`);
+          sendMessage(callbackChatId, `Data berhasil dimasukkan:\n\nNama: ${name}\nType: ${type}\nUrl: ${url}`);
         } else {
           sendMessage(callbackChatId, "Gagal menyimpan data.");
           deleteUserData(callbackChatId);
@@ -237,6 +237,11 @@ function checkAdminAndPost(chatId, userId) {
 function postAirdropList(chatId) {
   var sheet = SpreadsheetApp.openById(sheetId).getSheetByName(userSheetName);
   var data = sheet.getDataRange().getValues();
+
+  if (data.length <= 1) {
+    sendMessage(chatId, "⛔️ Tidak ada daily tersimpan");
+    return;
+  }
 
   var message = `♻️ Daily Recap *${getGroupName(GROUPID)}* ${Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy')}\n\n`;
 
