@@ -78,10 +78,10 @@ Here are the commands and features you can use with your bot:
 
 | Feature          | Preview |
 |------------------|---------|
-| Adding Data (From Bot)     | ![Add Data](https://link-to-screenshot) |
-| Editing Data (From Bot)    | ![Edit Data](https://link-to-screenshot) |
-| Deleting Data (From Bot)    | ![Daily Recap](https://link-to-screenshot) |
-| Daily Recap (From Group)   | ![Daily Recap](https://link-to-screenshot) |
+| Adding Data (From Bot)     | ![Add Data](https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/add-data.jpg) |
+| Editing Data (From Bot)    | ![Edit Data](https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/edit-data.jpg) |
+| Deleting Data (From Bot)    | ![Daily Recap](https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/delete-data.jpg) |
+| Daily Recap (From Group)   | ![Daily Recap](https://github.com/cryptofinderid/GASGroupAirdropManager/blob/main/media/daily-group.jpg) |
 
 ---
 
