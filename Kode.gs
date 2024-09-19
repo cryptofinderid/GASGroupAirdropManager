@@ -14,10 +14,10 @@ function doPost(e) {
     var chatType = contents.message ? contents.message.chat.type : "";
 
     // Periksa apakah pengguna adalah admin sebelum melanjutkan
-    var isAdmin = checkAdminAndPost(chatId, userId);
+    var isAdmin = checkAdminAndPost(GROUPID, userId);
     if (!isAdmin) {
       // Jika bukan admin, kirim pesan dan hentikan eksekusi
-      sendMessage(chatId, "Anda bukan admin atau pemilik grup ini, tidak bisa mengakses fitur bot.");
+      sendMessage(chatId, "Anda bukan admin atau pemilik grup getGroupName(GROUPID), tidak bisa mengakses fitur bot.");
       return; // Hentikan eksekusi lebih lanjut
     }
 
@@ -238,7 +238,7 @@ function postAirdropList(chatId) {
   var sheet = SpreadsheetApp.openById(sheetId).getSheetByName(userSheetName);
   var data = sheet.getDataRange().getValues();
 
-  var message = `♻️ Daily Recap *${getGroupName(chatId)}* ${Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy')}\n\n`;
+  var message = `♻️ Daily Recap *${getGroupName(GROUPID)}* ${Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy')}\n\n`;
 
   var groupedData = {};
 
